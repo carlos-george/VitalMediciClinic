@@ -40,6 +40,14 @@ export class CreateAgenda1621206981774 implements MigrationInterface {
                     type: 'uuid'
                 },
                 {
+                    name: 'day',
+                    type: 'date'
+                },
+                {
+                    name: 'medEspDesc',
+                    type: 'varchar'
+                },
+                {
                     name: 'created_at',
                     type: 'timestamp',
                     default: 'now()'

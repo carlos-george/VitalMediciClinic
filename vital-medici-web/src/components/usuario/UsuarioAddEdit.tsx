@@ -12,6 +12,7 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { FaTimes, FaUserEdit, FaEye, FaEyeSlash, FaUndo, FaCheck } from "react-icons/fa";
 
 import api from "../../services/api";
+import { Permission } from '../Permission';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -228,7 +229,7 @@ const UsuarioAddEdit: React.FC<UsuarioShowProps> = ({
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
-                                        { showPassword
+                                        {showPassword
                                             ? <FaEye size={20} className={classes.adornmentImg} onClick={() => { setShowPassword(false) }} />
                                             : <FaEyeSlash size={20} className={classes.adornmentImg} onClick={() => { setShowPassword(true) }} />
                                         }
@@ -238,29 +239,31 @@ const UsuarioAddEdit: React.FC<UsuarioShowProps> = ({
                         />
                     )
                     }
-                    <TextField
-                        className={classes.margin}
-                        id="perfil"
-                        select
-                        fullWidth
-                        name="perfil"
-                        label="Perfil"
-                        placeholder="Perfil"
-                        value={values.role_id || ''}
-                        onChange={(event) => {
-                            setValues({
-                                ...values,
-                                role_id: event.target.value + ''
-                            })
-                        }}
-                        variant="outlined"
-                    >
-                        {roles.map((role) => (
-                            <MenuItem key={role.id} value={role.id}>
-                                {role.description}
-                            </MenuItem>
-                        ))}
-                    </TextField>
+                    <Permission roles={['ROLE_ADMIN']}>
+                        <TextField
+                            className={classes.margin}
+                            id="perfil"
+                            select
+                            fullWidth
+                            name="perfil"
+                            label="Perfil"
+                            placeholder="Perfil"
+                            value={values.role_id || ''}
+                            onChange={(event) => {
+                                setValues({
+                                    ...values,
+                                    role_id: event.target.value + ''
+                                })
+                            }}
+                            variant="outlined"
+                        >
+                            {roles.map((role) => (
+                                <MenuItem key={role.id} value={role.id}>
+                                    {role.description}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                    </Permission>
                 </Grid>
 
                 <div className={classes.buttons}>

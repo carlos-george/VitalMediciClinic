@@ -7,6 +7,7 @@ export class CreateSeedsTiposConsultas1621213786386 implements MigrationInterfac
 
         await queryRunner.query(`insert into tipos_consultas(id, descricao) values ('${uuid()}', 'Consulta');`);
         await queryRunner.query(`insert into tipos_consultas(id, descricao) values ('${uuid()}', 'Retorno');`);
+        await queryRunner.query(`insert into tipos_consultas(id, descricao) values ('${uuid()}', 'Labolatório');`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

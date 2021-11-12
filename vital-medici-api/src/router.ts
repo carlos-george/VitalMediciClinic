@@ -7,6 +7,7 @@ import { ConfigController } from './controllers/ConfigController';
 import { MedicoController } from './controllers/MedicoController';
 import { AgendaController } from './controllers/AgendaController';
 import { PacienteController } from './controllers/PacienteController';
+import { PresenterController } from './controllers/PresenterController';
 
 declare global {
     namespace Express {
@@ -26,6 +27,8 @@ const medicoController = new MedicoController();
 const agendaController = new AgendaController();
 
 const pacienteController = new PacienteController();
+
+const presenterController = new PresenterController();
 
 const router = Router();
 
@@ -63,6 +66,7 @@ router.post('/medicos', auth, medicoController.create);
 router.put('/medicos/:id', auth, medicoController.update);
 
 // Agenda
+router.post('/nova-consulta', auth, agendaController.novaConsulta);
 router.post('/agendas', auth, agendaController.create);
 router.delete('/agendas/:id', auth, agendaController.delete);
 router.get('/agendas-day', auth, agendaController.getAgendaByDay);
@@ -71,5 +75,9 @@ router.put('/agendas-status/:id', auth, agendaController.updateStatus);
 // Paciente
 
 router.post('/pacientes', auth, pacienteController.create);
+
+//Presenter
+
+router.get('/status-tipo-consulta', presenterController.getListaStatusAndTipoConsulta);
 
 export { router }

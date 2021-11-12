@@ -30,18 +30,19 @@ class UserController {
         const { firstname, lastname, username, password, datebirth, role_id } = request.body;
 
         const schema = yup.object().shape({
-            firstname: yup.string().required(),
-            lastname: yup.string().required(),
-            username: yup.string().required(),
-            password: yup.string().required(),
-            datebirth: yup.string().required(),
-            role_id: yup.string().required(),
+            firstname: yup.string().defined("Primeiro nome é um campo obrigatório."),
+            lastname: yup.string().defined("Último nome é um campo obrigatório."),
+            username: yup.string().defined("Nome de Usuário é um campo obrigatório."),
+            datebirth: yup.string().defined("Data de Nascimento é um campo obrigatório."),
+            password: yup.string().defined("Senha é um campo obrigatório."),
+            role_id: yup.string().defined("Permissão é um campo obrigatório."),
         });
 
         try {
             await schema.validate(request.body, { abortEarly: false });
-        } catch (err) {
-            throw new AppErrors(err);
+        } catch (err: any) {
+            const msg = err.errors[0];
+            throw new AppErrors(msg);
         }
 
         const passHash = await bcrypt.hash(password, 10);
@@ -75,16 +76,17 @@ class UserController {
         const { id, firstname, lastname, username, datebirth, role_id } = request.body;
 
         const schema = yup.object().shape({
-            firstname: yup.string().required(),
-            lastname: yup.string().required(),
-            username: yup.string().required(),
-            datebirth: yup.string().required(),
+            firstname: yup.string().defined("Primeiro nome é um campo obrigatório."),
+            lastname: yup.string().defined("Último nome é um campo obrigatório."),
+            username: yup.string().defined("Nome de Usuário é um campo obrigatório."),
+            datebirth: yup.string().defined("Data de Nascimento é um campo obrigatório."),
         });
 
         try {
             await schema.validate(request.body, { abortEarly: false });
-        } catch (err) {
-            throw new AppErrors(err);
+        } catch (err: any) {
+            const msg = err.errors[0];
+            throw new AppErrors(msg);
         }
 
         const userRepository = getCustomRepository(UsersRepository);
@@ -118,14 +120,15 @@ class UserController {
         const { id } = request.params;
 
         const schema = yup.object().shape({
-            current: yup.string().required(),
-            newpass: yup.string().required(),
+            current: yup.string().defined("Senha atual é um campo obrigatório."),
+            newpass: yup.string().defined("Nova senha é um campo obrigatório."),
         });
 
         try {
             await schema.validate(request.body, { abortEarly: false });
-        } catch (err) {
-            throw new AppErrors(err);
+        } catch (err: any) {
+            const msg = err.errors[0];
+            throw new AppErrors(msg);
         }
 
         const userRepository = getCustomRepository(UsersRepository);

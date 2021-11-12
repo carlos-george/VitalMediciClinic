@@ -6,6 +6,7 @@ import { Login } from './pages/Login';
 import { Home } from './pages/Home';
 import { Usuário } from './pages/Usuário';
 import useAuth from './hooks/useAuth';
+import { Agenda } from './pages/Agenda';
 
 interface CustomRouteProps extends RouteProps {
     isPrivate?: boolean;
@@ -34,6 +35,7 @@ export const Routes = () => {
                 <CustomRoute exact path="/login" component={Login} />
                 <CustomRoute isPrivate exact path="/" component={Home} />
                 <CustomRoute isPrivate exact path="/usuarios" component={Usuário} />
+                <CustomRoute isPrivate exact path="/agenda" component={Agenda} />
             </Switch>
         </BrowserRouter>
     );

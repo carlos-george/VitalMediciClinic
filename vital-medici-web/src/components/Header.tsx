@@ -1,6 +1,6 @@
 // @flow 
 
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import {
     AppBar,
     Button,
@@ -64,41 +64,47 @@ export const Header = () => {
                         aria-haspopup="false"
                         color="secondary"
                         className={classes.button}
+                        onClick={() => {
+                            setAnchorPacienteEl(null);
+                            history.push('agenda')
+                        }}
                     >
                         Agenda
                     </Button>
-                    <Button
-                        aria-controls="simple-menu"
-                        aria-haspopup="true"
-                        onClick={(event) => { setAnchorPacienteEl(event.currentTarget) }}
-                        color="secondary"
-                        className={classes.button}
-                        name="paciente"
-                    >
-                        Paciente
-                    </Button>
-                    <Menu
-                        id="simple-menu"
-                        anchorEl={anchorPacienteEl}
-                        keepMounted
-                        open={Boolean(anchorPacienteEl)}
-                        onClose={() => { setAnchorPacienteEl(null) }}
-                        elevation={0}
-                        getContentAnchorEl={null}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'center',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'center',
-                        }}
-                    >
-                        <MenuItem onClick={() => { setAnchorPacienteEl(null) }}>Profile</MenuItem>
-                        <MenuItem onClick={() => { setAnchorPacienteEl(null) }}>My account</MenuItem>
-                        <MenuItem onClick={() => { setAnchorPacienteEl(null) }}>Logout</MenuItem>
-                    </Menu>
-                    <Permission roles={['ROLE_ADMIN', 'ROLE_USER']}>
+                    <Permission roles={['ROLE_ADMIN']}>
+                        <Button
+                            aria-controls="simple-menu"
+                            aria-haspopup="true"
+                            onClick={(event) => { setAnchorPacienteEl(event.currentTarget) }}
+                            color="secondary"
+                            className={classes.button}
+                            name="paciente"
+                        >
+                            Paciente
+                        </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorPacienteEl}
+                            keepMounted
+                            open={Boolean(anchorPacienteEl)}
+                            onClose={() => { setAnchorPacienteEl(null) }}
+                            elevation={0}
+                            getContentAnchorEl={null}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}
+                        >
+                            <MenuItem onClick={() => { setAnchorPacienteEl(null) }}>Profile</MenuItem>
+                            <MenuItem onClick={() => { setAnchorPacienteEl(null) }}>My account</MenuItem>
+                            <MenuItem onClick={() => { setAnchorPacienteEl(null) }}>Logout</MenuItem>
+                        </Menu>
+                    </Permission>
+                    <Permission roles={['ROLE_ADMIN']}>
                         <Button
                             aria-controls="simple-menu"
                             aria-haspopup="false"
@@ -108,7 +114,7 @@ export const Header = () => {
                             name="config"
                         >
                             Configurações
-                    </Button>
+                        </Button>
                         <Menu
                             id="simple-menu"
                             anchorEl={anchorConfigEl}

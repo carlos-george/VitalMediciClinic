@@ -25,13 +25,16 @@ class Agenda {
     telContatoPaciente: string;
 
     @Column()
-    medico_especialidade_id: string;
+    medEspDesc: string;
 
-    @Column()
-    status_id: string;
+    // @Column()
+    // medico_especialidade_id: string;
 
-    @Column()
-    tipoConsulta_id: string;
+    // @Column()
+    // status_id: string;
+
+    // @Column()
+    // tipoConsulta_id: string;
 
     @CreateDateColumn()
     created_at: Date;
