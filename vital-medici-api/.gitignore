@@ -5,6 +5,9 @@
 
 .env
 
+ormconfigAWS.json
+ormconfigGCP.json
+
 # Logs
 logs
 *.log

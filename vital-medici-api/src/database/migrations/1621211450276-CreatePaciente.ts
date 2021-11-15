@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreatePaciente1621211450276 implements MigrationInterface {
+export class CreatePaciente1621207848271 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
@@ -9,7 +9,7 @@ export class CreatePaciente1621211450276 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'uuid',
+                    type: 'varchar',
                     isPrimary: true,
                 },
                 {
@@ -30,7 +30,7 @@ export class CreatePaciente1621211450276 implements MigrationInterface {
                 },
                 {
                     name: 'endereco_id',
-                    type: 'uuid'
+                    type: 'varchar'
                 },
                 {
                     name: 'created_at',
@@ -40,7 +40,7 @@ export class CreatePaciente1621211450276 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    name: 'FK_Enderecos',
+                    name: 'FK_Pacientes_Enderecos',
                     referencedTableName: 'enderecos',
                     referencedColumnNames: ['id'],
                     columnNames: ['endereco_id'],

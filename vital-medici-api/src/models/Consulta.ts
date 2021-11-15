@@ -29,7 +29,7 @@ class Consulta {
     status: Status;
 
     @OneToOne(() => TipoConsulta)
-    @JoinColumn({ name: 'tipoConsulta_id' })
+    @JoinColumn({ name: 'tipos_consultas_id' })
     tipoConsulta: TipoConsulta;
 }
 

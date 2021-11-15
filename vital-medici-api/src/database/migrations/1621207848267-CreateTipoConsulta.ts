@@ -8,7 +8,7 @@ export class CreateTipoConsulta1621207848267 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'uuid',
+                    type: 'varchar',
                     isPrimary: true,
                 },
                 {

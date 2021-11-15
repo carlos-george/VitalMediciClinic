@@ -8,16 +8,16 @@ export class CreateMedicoEspecialidades1621202828621 implements MigrationInterfa
             columns: [
                 {
                     name: 'id',
-                    type: 'varchar',
+                    type: 'uuid',
                     isPrimary: true,
                 },
                 {
                     name: 'medico_id',
-                    type: 'varchar'
+                    type: 'uuid'
                 },
                 {
                     name: 'especialidade_id',
-                    type: 'varchar'
+                    type: 'uuid'
                 },
                 {
                     name: 'valor',
@@ -26,7 +26,7 @@ export class CreateMedicoEspecialidades1621202828621 implements MigrationInterfa
             ],
             foreignKeys: [
                 {
-                    name: 'FK_MedEsp_Medicos',
+                    name: 'FK_Medicos',
                     referencedTableName: 'medicos',
                     referencedColumnNames: ['id'],
                     columnNames: ['medico_id'],
@@ -34,7 +34,7 @@ export class CreateMedicoEspecialidades1621202828621 implements MigrationInterfa
                     onUpdate: 'CASCADE'
                 },
                 {
-                    name: 'FK_MedEsp_Especialidades',
+                    name: 'FK_Especialidades',
                     referencedTableName: 'especialidades',
                     referencedColumnNames: ['id'],
                     columnNames: ['especialidade_id'],

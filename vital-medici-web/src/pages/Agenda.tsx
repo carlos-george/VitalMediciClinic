@@ -206,6 +206,23 @@ export const Agenda = () => {
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
         console.log("Data: ", values);
+
+        api.post("/nova-consulta", values).then((response) => {
+            getConsultas();
+            enqueueSnackbar("Consulta Registrada com sucesso", {
+                variant: 'success',
+            });
+            setValues(initialValues);
+        }).catch((error) => {
+
+            const { data } = error.response;
+            if (data.error) {
+                setConsultas([]);
+                enqueueSnackbar(data.error, {
+                    variant: 'error',
+                });
+            }
+        })
     }
 
     function handleOnChange(event: ChangeEvent<HTMLInputElement>) {

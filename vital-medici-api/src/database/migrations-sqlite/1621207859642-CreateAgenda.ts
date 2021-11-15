@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateAgenda1621207848269 implements MigrationInterface {
+export class CreateAgenda1621206981774 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
@@ -8,7 +8,7 @@ export class CreateAgenda1621207848269 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'varchar',
+                    type: 'uuid',
                     isPrimary: true,
                 },
                 {
@@ -17,7 +17,7 @@ export class CreateAgenda1621207848269 implements MigrationInterface {
                 },
                 {
                     name: 'medico_especialidade_id',
-                    type: 'varchar'
+                    type: 'uuid'
                 },
                 {
                     name: 'nomePaciente',
@@ -33,11 +33,11 @@ export class CreateAgenda1621207848269 implements MigrationInterface {
                 },
                 {
                     name: 'status_id',
-                    type: 'varchar'
+                    type: 'uuid'
                 },
                 {
                     name: 'tipoConsulta_id',
-                    type: 'varchar'
+                    type: 'uuid'
                 },
                 {
                     name: 'day',
@@ -55,19 +55,19 @@ export class CreateAgenda1621207848269 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    name: 'FK_Agendas_Medico_Especialidade',
+                    name: 'FK_Medico_Especialidade',
                     referencedTableName: 'medicos_especialidades',
                     referencedColumnNames: ['id'],
                     columnNames: ['medico_especialidade_id'],
                 },
                 {
-                    name: 'FK_Agendas_Status',
+                    name: 'FK_Status',
                     referencedTableName: 'status',
                     referencedColumnNames: ['id'],
                     columnNames: ['status_id'],
                 },
                 {
-                    name: 'FK_Agendas_Tipos_Consultas',
+                    name: 'FK_Tipos_Consultas',
                     referencedTableName: 'tipos_consultas',
                     referencedColumnNames: ['id'],
                     columnNames: ['tipoConsulta_id'],

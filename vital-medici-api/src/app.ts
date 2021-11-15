@@ -7,6 +7,7 @@ import createConnection from './database';
 import { router } from './router';
 import { AppErrors } from './errors/AppErrors';
 
+
 createConnection();
 
 const app = express();

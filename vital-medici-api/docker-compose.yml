@@ -1,0 +1,28 @@
+version: "3.2"
+
+services:
+  vitalmedici-db:
+    container_name: vitalmedici-db
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin123"
+      MYSQL_DATABASE: "vitalmedicidb"
+    ports:
+      - "3306:3306"
+    networks:
+      - vitalmedici-net
+    volumes:
+      - "vitalmedici:/var/lib/mysql"
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - vitalmedici-net
+
+networks:
+  vitalmedici-net:
+volumes:
+  vitalmedici:

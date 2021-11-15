@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateConsulta1621210499649 implements MigrationInterface {
+export class CreateConsulta1621207848272 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
@@ -8,7 +8,7 @@ export class CreateConsulta1621210499649 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'uuid',
+                    type: 'varchar',
                     isPrimary: true,
                 },
                 {
@@ -17,19 +17,19 @@ export class CreateConsulta1621210499649 implements MigrationInterface {
                 },
                 {
                     name: 'medico_especialidade_id',
-                    type: 'uuid'
+                    type: 'varchar'
                 },
                 {
                     name: 'paciente_id',
-                    type: 'uuid'
+                    type: 'varchar'
                 },
                 {
                     name: 'status_id',
-                    type: 'uuid'
+                    type: 'varchar'
                 },
                 {
                     name: 'tipoConsulta_id',
-                    type: 'uuid'
+                    type: 'varchar'
                 },
                 {
                     name: 'create_at',
@@ -39,25 +39,25 @@ export class CreateConsulta1621210499649 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    name: 'FK_Medico_Especialidade',
+                    name: 'FK_Consultas_Medico_Especialidade',
                     referencedTableName: 'medicos_especialidades',
                     referencedColumnNames: ['id'],
                     columnNames: ['medico_especialidade_id'],
                 },
                 {
-                    name: 'FK_Status',
+                    name: 'FK_Consultas_Status',
                     referencedTableName: 'status',
                     referencedColumnNames: ['id'],
                     columnNames: ['status_id'],
                 },
                 {
-                    name: 'FK_Tipos_Consultas',
+                    name: 'FK_Consultas_Tipos_Consultas',
                     referencedTableName: 'tipos_consultas',
                     referencedColumnNames: ['id'],
                     columnNames: ['tipoConsulta_id'],
                 },
                 {
-                    name: 'FK_Pacientes',
+                    name: 'FK_Consultas_Pacientes',
                     referencedTableName: 'pacientes',
                     referencedColumnNames: ['id'],
                     columnNames: ['paciente_id'],

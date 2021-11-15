@@ -9,7 +9,7 @@ export class CreateUsers1614548238094 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'varchar',
+                        type: 'uuid',
                         isPrimary: true,
                     },
                     {
@@ -48,7 +48,7 @@ export class CreateUsers1614548238094 implements MigrationInterface {
                     },
                     {
                         name: 'role_id',
-                        type: 'varchar'
+                        type: 'uuid'
                     },
                     {
                         name: 'created_at',
@@ -58,7 +58,7 @@ export class CreateUsers1614548238094 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: 'FK_Users_Roles',
+                        name: 'FK_User_Roles',
                         columnNames: ['role_id'],
                         referencedTableName: 'roles',
                         referencedColumnNames: ['id']

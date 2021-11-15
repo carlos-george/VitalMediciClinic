@@ -8,7 +8,7 @@ export class CreateEspecialidade1621200644613 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'uuid',
+                    type: 'varchar',
                     isPrimary: true,
                 },
                 {

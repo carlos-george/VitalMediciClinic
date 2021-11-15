@@ -1,44 +1,50 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateEndereco1621207848270 implements MigrationInterface {
+export class CreateMedico1621202450803 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
         await queryRunner.createTable(new Table({
-            name: 'enderecos',
+            name: 'medicos',
             columns: [
                 {
                     name: 'id',
-                    type: 'varchar',
+                    type: 'uuid',
                     isPrimary: true,
                 },
                 {
-                    name: 'cep',
-                    type: 'integer'
-                },
-                {
-                    name: 'logradouro',
+                    name: 'nome',
                     type: 'varchar'
                 },
                 {
-                    name: 'numero',
+                    name: 'crm',
                     type: 'varchar'
                 },
                 {
-                    name: 'complemento',
+                    name: 'telContato',
                     type: 'varchar'
+                },
+                {
+                    name: 'dataNascimento',
+                    type: 'timestamp'
+                },
+                {
+                    name: 'isactive',
+                    type: 'boolean',
+
                 },
                 {
                     name: 'created_at',
                     type: 'timestamp',
                     default: 'now()'
-                }
+                },
+
             ]
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('enderecos');
+        await queryRunner.dropTable('medicos');
     }
 
 }

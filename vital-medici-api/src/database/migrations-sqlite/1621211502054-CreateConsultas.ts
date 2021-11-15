@@ -1,83 +1,73 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateAgenda1621207848269 implements MigrationInterface {
+export class CreateConsulta1621210499649 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'agendas',
+            name: 'consultas',
             columns: [
                 {
                     name: 'id',
-                    type: 'varchar',
+                    type: 'uuid',
                     isPrimary: true,
                 },
                 {
-                    name: 'hora',
-                    type: 'integer'
+                    name: 'anamnese',
+                    type: 'varchar'
                 },
                 {
                     name: 'medico_especialidade_id',
-                    type: 'varchar'
+                    type: 'uuid'
                 },
                 {
-                    name: 'nomePaciente',
-                    type: 'varchar'
-                },
-                {
-                    name: 'nomeAcompanhante',
-                    type: 'varchar'
-                },
-                {
-                    name: 'telContatoPaciente',
-                    type: 'varchar'
+                    name: 'paciente_id',
+                    type: 'uuid'
                 },
                 {
                     name: 'status_id',
-                    type: 'varchar'
+                    type: 'uuid'
                 },
                 {
                     name: 'tipoConsulta_id',
-                    type: 'varchar'
+                    type: 'uuid'
                 },
                 {
-                    name: 'day',
-                    type: 'date'
-                },
-                {
-                    name: 'medEspDesc',
-                    type: 'varchar'
-                },
-                {
-                    name: 'created_at',
+                    name: 'create_at',
                     type: 'timestamp',
                     default: 'now()'
                 }
             ],
             foreignKeys: [
                 {
-                    name: 'FK_Agendas_Medico_Especialidade',
+                    name: 'FK_Medico_Especialidade',
                     referencedTableName: 'medicos_especialidades',
                     referencedColumnNames: ['id'],
                     columnNames: ['medico_especialidade_id'],
                 },
                 {
-                    name: 'FK_Agendas_Status',
+                    name: 'FK_Status',
                     referencedTableName: 'status',
                     referencedColumnNames: ['id'],
                     columnNames: ['status_id'],
                 },
                 {
-                    name: 'FK_Agendas_Tipos_Consultas',
+                    name: 'FK_Tipos_Consultas',
                     referencedTableName: 'tipos_consultas',
                     referencedColumnNames: ['id'],
                     columnNames: ['tipoConsulta_id'],
+                },
+                {
+                    name: 'FK_Pacientes',
+                    referencedTableName: 'pacientes',
+                    referencedColumnNames: ['id'],
+                    columnNames: ['paciente_id'],
                 },
             ]
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('agendas');
+        await queryRunner.dropTable('consultas');
     }
 
 }

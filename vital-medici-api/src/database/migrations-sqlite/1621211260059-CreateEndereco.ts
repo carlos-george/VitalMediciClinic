@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateEndereco1621207848270 implements MigrationInterface {
+export class CreateEndereco1621211260059 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
@@ -9,8 +9,8 @@ export class CreateEndereco1621207848270 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'varchar',
-                    isPrimary: true,
+                    type: 'uuid',
+                    isPrimary: true
                 },
                 {
                     name: 'cep',
