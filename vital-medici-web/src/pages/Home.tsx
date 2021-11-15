@@ -17,9 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const Home = () => {
-
     const classes = useStyles();
-
     return (
         <PageContent>
             <Container className={classes.root} maxWidth="lg">
